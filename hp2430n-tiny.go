@@ -19,11 +19,11 @@ func (h *Hp2430n) targetNew() {
 	})
 }
 
-func (h *Hp2430n) write(buf []byte) (n int, err error) {
+func (h *Hp2430n) Write(buf []byte) (n int, err error) {
 	n, err = h.uart.Write(buf)
 	return n, err
 }
 
-func (h *Hp2430n) read(buf []byte) (n int, err error) {
+func (h *Hp2430n) Read(buf []byte) (n int, err error) {
 	return h.uart.Read(buf)
 }

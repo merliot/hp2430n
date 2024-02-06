@@ -7,6 +7,7 @@ import (
 
 	"github.com/merliot/dean"
 	"github.com/merliot/device"
+	"github.com/merliot/device/modbus"
 )
 
 const (
@@ -134,14 +135,15 @@ type msgHistorical struct {
 
 type Hp2430n struct {
 	*device.Device
-	Status     string
-	System     System
-	Controller Controller
-	Battery    Battery
-	LoadInfo   LoadInfo
-	Solar      Solar
-	Daily      Daily
-	Historical Historical
+	*modbus.Modbus `json:"-"`
+	Status         string
+	System         System
+	Controller     Controller
+	Battery        Battery
+	LoadInfo       LoadInfo
+	Solar          Solar
+	Daily          Daily
+	Historical     Historical
 	targetStruct
 }
 
@@ -151,6 +153,7 @@ func New(id, model, name string) dean.Thinger {
 	println("NEW HP2430N")
 	h := &Hp2430n{}
 	h.Device = device.New(id, model, name, targets).(*device.Device)
+	h.Modbus = modbus.New(h)
 	h.Status = "OK"
 	h.targetNew()
 	return h
@@ -236,7 +239,7 @@ func chargeState(b byte) string {
 
 func (h *Hp2430n) readSystem(s *System) error {
 	// System Info (34 bytes)
-	regs, err := h.readRegisters(regMaxVoltage, 17)
+	regs, err := h.ReadRegisters(regMaxVoltage, 17)
 	if err != nil {
 		return err
 	}
@@ -302,7 +305,7 @@ func parseAlarms(b []byte) (active []string) {
 func (h *Hp2430n) readDynamic(c *Controller, b *Battery, l *LoadInfo, s *Solar) error {
 
 	// Controller Dynamic Info (20 bytes)
-	regs, err := h.readRegisters(regBatteryCapacity, 10)
+	regs, err := h.ReadRegisters(regBatteryCapacity, 10)
 	if err != nil {
 		return err
 	}
@@ -320,7 +323,7 @@ func (h *Hp2430n) readDynamic(c *Controller, b *Battery, l *LoadInfo, s *Solar) 
 	// skip solar power regs[18:20]
 
 	// Load Information (2 bytes)
-	regs, err = h.readRegisters(regLoadInfo, 1)
+	regs, err = h.ReadRegisters(regLoadInfo, 1)
 	if err != nil {
 		return err
 	}
@@ -329,7 +332,7 @@ func (h *Hp2430n) readDynamic(c *Controller, b *Battery, l *LoadInfo, s *Solar) 
 	b.ChargeState = chargeState(regs[1])
 
 	// Controller alarm information
-	regs, err = h.readRegisters(regAlarm, 2)
+	regs, err = h.ReadRegisters(regAlarm, 2)
 	if err != nil {
 		return err
 	}
@@ -341,7 +344,7 @@ func (h *Hp2430n) readDynamic(c *Controller, b *Battery, l *LoadInfo, s *Solar) 
 func (h *Hp2430n) readDaily(d *Daily) error {
 
 	// Current Day Info (22 bytes)
-	regs, err := h.readRegisters(regLoadCmd, 11)
+	regs, err := h.ReadRegisters(regLoadCmd, 11)
 	if err != nil {
 		return err
 	}
@@ -362,7 +365,7 @@ func (h *Hp2430n) readDaily(d *Daily) error {
 func (h *Hp2430n) readHistorical(d *Historical) error {
 
 	// Historical Info (22 bytes)
-	regs, err := h.readRegisters(regOpDays, 11)
+	regs, err := h.ReadRegisters(regOpDays, 11)
 	if err != nil {
 		return err
 	}

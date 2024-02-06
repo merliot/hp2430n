@@ -32,16 +32,6 @@ func (h *Hp2430n) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Hp2430n) write(buf []byte) (n int, err error) {
-	// TODO
-	return n, err
-}
-
-func (h *Hp2430n) read(buf []byte) (n int, err error) {
-	// TODO
-	return n, err
-}
-
 func (h *Hp2430n) DescHtml() []byte {
 	desc, _ := fs.ReadFile("html/desc.html")
 	return desc
