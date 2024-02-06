@@ -1,2 +1,2 @@
 # hp2430n
-Solisto Charge Controller Device
+Solisto HP2430N Charge Controller Device
