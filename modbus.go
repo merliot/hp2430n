@@ -1,5 +1,3 @@
-//go:build tinygo && rpi
-
 package hp2430n
 
 import (
