@@ -6,6 +6,8 @@ github.com/merliot/dean v0.0.0-20240117194605-79a37431f285 h1:r0nf5/aym09QK+uU6Y
 github.com/merliot/dean v0.0.0-20240117194605-79a37431f285/go.mod h1:uoIGfhAx8rt/TB3mDZcZWvO/+ajvNitFYYHSHBqqBrE=
 github.com/merliot/device v0.0.0-20240205012116-472b24514d09 h1:rdI4P6VTPzlGdusp7giurN7y2BSEictnWqymlRiVcNk=
 github.com/merliot/device v0.0.0-20240205012116-472b24514d09/go.mod h1:vPrEcw70HyTYj3yM5uzl4ZNDVoPpyIRdl6xM9kpChn0=
+github.com/merliot/device v0.0.0-20240206060217-03df0ed5e2a2 h1:k+N8qjPj81cveAgBnPmt24irCro2BjcUublX2Wwha6U=
+github.com/merliot/device v0.0.0-20240206060217-03df0ed5e2a2/go.mod h1:vPrEcw70HyTYj3yM5uzl4ZNDVoPpyIRdl6xM9kpChn0=
 github.com/merliot/hub v0.0.0-20231201053612-24f08711cbb1 h1:RogBpD2Hj+o9OQVKS+ZsS9+kz3WXzLfDH09zGjKnc2k=
 github.com/merliot/hub v0.0.0-20231201053612-24f08711cbb1/go.mod h1:UWNzbHxuk59gpZBJ5IAPevLmMgnpwhygAJKeV/U7avo=
 golang.org/x/crypto v0.18.0 h1:PGVlW0xEltQnzFZ55hkuX5+KLyrMYhHld1YHO4AKcdc=

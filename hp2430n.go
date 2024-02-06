@@ -200,8 +200,18 @@ func volts(b []byte) float32 {
 	return float32(swap(b)) * 0.1
 }
 
+func unvolts(volts float32) []byte {
+	value := uint16(volts / 0.1)
+	return []byte{byte(value >> 8), byte(value & 0xFF)}
+}
+
 func amps(b []byte) float32 {
 	return float32(swap(b)) * 0.01
+}
+
+func unamps(amps float32) []byte {
+	value := uint16(amps / 0.01)
+	return []byte{byte(value >> 8), byte(value & 0xFF)}
 }
 
 func chargeState(b byte) string {
