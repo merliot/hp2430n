@@ -20,8 +20,7 @@ func (h *Hp2430n) targetNew() {
 }
 
 func (h *Hp2430n) Write(buf []byte) (n int, err error) {
-	n, err = h.uart.Write(buf)
-	return n, err
+	return h.uart.Write(buf)
 }
 
 func (h *Hp2430n) Read(buf []byte) (n int, err error) {

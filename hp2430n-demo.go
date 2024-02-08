@@ -23,10 +23,12 @@ func (h *Hp2430n) Write(buf []byte) (n int, err error) {
 }
 
 func (h *Hp2430n) Read(buf []byte) (n int, err error) {
+	// simluate a Modbus request read on the device
 	res := buf[3:]
 	switch h.start {
 	case regMaxVoltage:
 	case regBatteryCapacity:
+		// TODO make this more dynamic using a little bit of random
 		copy(res[2:4], unvolts(13.4))   // battery.volts
 		copy(res[4:6], unamps(3.5))     // battery.amps
 		copy(res[8:10], unvolts(12.8))  // load.volts

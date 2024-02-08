@@ -11,7 +11,7 @@ import (
 	"github.com/merliot/device"
 )
 
-//go:embed css html js template
+//go:embed css html images js template
 var fs embed.FS
 
 type osStruct struct {
