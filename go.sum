@@ -12,6 +12,8 @@ github.com/merliot/device v0.0.0-20240206080237-23851251502b h1:bbcQd3pPWbfeGi2d
 github.com/merliot/device v0.0.0-20240206080237-23851251502b/go.mod h1:vPrEcw70HyTYj3yM5uzl4ZNDVoPpyIRdl6xM9kpChn0=
 github.com/merliot/device v0.0.0-20240206192909-bd95e0e1c2e3 h1:MF4dGNxYVgOebnyIcbYaV04mWrRWVzlJxMDGq3N54j0=
 github.com/merliot/device v0.0.0-20240206192909-bd95e0e1c2e3/go.mod h1:vPrEcw70HyTYj3yM5uzl4ZNDVoPpyIRdl6xM9kpChn0=
+github.com/merliot/device v0.0.0-20240210074043-1e50b061e357 h1:afkfTCeKXSWQrGXoWXa/d/bg2Bkqx4dLj2xt+iJQnLs=
+github.com/merliot/device v0.0.0-20240210074043-1e50b061e357/go.mod h1:vPrEcw70HyTYj3yM5uzl4ZNDVoPpyIRdl6xM9kpChn0=
 github.com/merliot/hub v0.0.0-20231201053612-24f08711cbb1 h1:RogBpD2Hj+o9OQVKS+ZsS9+kz3WXzLfDH09zGjKnc2k=
 github.com/merliot/hub v0.0.0-20231201053612-24f08711cbb1/go.mod h1:UWNzbHxuk59gpZBJ5IAPevLmMgnpwhygAJKeV/U7avo=
 golang.org/x/crypto v0.18.0 h1:PGVlW0xEltQnzFZ55hkuX5+KLyrMYhHld1YHO4AKcdc=

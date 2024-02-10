@@ -3,33 +3,11 @@
 package hp2430n
 
 import (
-	"embed"
-	"html/template"
 	"net/http"
-	"strings"
-
-	"github.com/merliot/device"
 )
 
-//go:embed css html images js template
-var fs embed.FS
-
-type osStruct struct {
-	templates *template.Template
-}
-
-func (h *Hp2430n) osNew() {
-	h.CompositeFs.AddFS(fs)
-	h.templates = h.CompositeFs.ParseFS("template/*")
-}
-
 func (h *Hp2430n) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	switch strings.TrimPrefix(r.URL.Path, "/") {
-	case "state":
-		device.ShowState(h.templates, w, h)
-	default:
-		h.API(h.templates, w, r)
-	}
+	h.API(w, r, h)
 }
 
 func (h *Hp2430n) DescHtml() []byte {

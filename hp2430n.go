@@ -1,6 +1,7 @@
 package hp2430n
 
 import (
+	"embed"
 	"fmt"
 	"strings"
 	"time"
@@ -9,6 +10,9 @@ import (
 	"github.com/merliot/device"
 	"github.com/merliot/device/modbus"
 )
+
+//go:embed css html images js template
+var fs embed.FS
 
 const (
 	regMaxVoltage      = 0x000A
@@ -152,7 +156,7 @@ var targets = []string{"demo", "rpi", "nano-rp2040"}
 func New(id, model, name string) dean.Thinger {
 	println("NEW HP2430N")
 	h := &Hp2430n{}
-	h.Device = device.New(id, model, name, targets).(*device.Device)
+	h.Device = device.New(id, model, name, fs, targets).(*device.Device)
 	h.Modbus = modbus.New(h)
 	h.Status = "OK"
 	h.targetNew()
