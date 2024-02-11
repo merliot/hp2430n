@@ -3,6 +3,7 @@ package hp2430n
 import (
 	"embed"
 	"fmt"
+	"net/http"
 	"strings"
 	"time"
 
@@ -185,6 +186,10 @@ func (h *Hp2430n) Subscribers() dean.Subscribers {
 		"update/dialy":      h.save,
 		"update/historical": h.save,
 	}
+}
+
+func (h *Hp2430n) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	h.API(w, r, h)
 }
 
 func version(b []byte) string {
