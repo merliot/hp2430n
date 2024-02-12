@@ -2,28 +2,27 @@
 
 package hp2430n
 
-type targetRelayStruct struct {
-}
-
-type targetStruct struct {
+type transport struct {
 	start uint16
 	words uint16
 }
 
-func (h *Hp2430n) targetNew() {
+func newTransport() *transport {
+	return &transport{}
 }
 
-func (h *Hp2430n) Write(buf []byte) (n int, err error) {
+func (t *transport) Write(buf []byte) (n int, err error) {
 	// get start and words from Modbus request
-	h.start = (uint16(buf[2]) << 8) | uint16(buf[3])
-	h.words = (uint16(buf[4]) << 8) | uint16(buf[5])
+	println("Write")
+	t.start = (uint16(buf[2]) << 8) | uint16(buf[3])
+	t.words = (uint16(buf[4]) << 8) | uint16(buf[5])
 	return n, nil
 }
 
-func (h *Hp2430n) Read(buf []byte) (n int, err error) {
+func (t *transport) Read(buf []byte) (n int, err error) {
 	// simluate a Modbus request read on the device
 	res := buf[3:]
-	switch h.start {
+	switch t.start {
 	case regMaxVoltage:
 	case regBatteryCapacity:
 		// TODO make this more dynamic using a little bit of random
@@ -38,5 +37,5 @@ func (h *Hp2430n) Read(buf []byte) (n int, err error) {
 	case regOpDays:
 	case regAlarm:
 	}
-	return int(5 + h.words*2), nil
+	return int(5 + t.words*2), nil
 }
