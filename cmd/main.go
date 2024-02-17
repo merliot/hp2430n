@@ -13,7 +13,8 @@ import (
 var (
 	id           = dean.GetEnv("ID", "hp2430n01")
 	name         = dean.GetEnv("NAME", "Solisto hp2430n")
-	deployParams = dean.GetEnv("DEPLOY_PARAMS", "target=demo")
+	deployParams = dean.GetEnv("DEPLOY_PARAMS", "")
+	wsScheme     = dean.GetEnv("WS_SCHEME", "ws://")
 	port         = dean.GetEnv("PORT", "8000")
 	portPrime    = dean.GetEnv("PORT_PRIME", "8001")
 	user         = dean.GetEnv("USER", "")
@@ -28,5 +29,6 @@ func main() {
 	hp2430n.SetDeployParams(deployParams)
 	hp2430n.SetWifiAuth(ssids, passphrases)
 	hp2430n.SetDialURLs(dialURLs)
-	runner.Run(hp2430n, port, portPrime, user, passwd, dialURLs)
+	hp2430n.SetWsScheme(wsScheme)
+	runner.Run(hp2430n, port, portPrime, user, passwd, dialURLs, wsScheme)
 }
