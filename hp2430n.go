@@ -12,7 +12,7 @@ import (
 	"github.com/merliot/device/modbus"
 )
 
-//go:embed css html images js template
+//go:embed css go.mod html images js template
 var fs embed.FS
 
 const (
