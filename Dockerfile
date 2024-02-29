@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 RUN go build -tags prime -o /hp2430n ./cmd
-RUN /hp2430n -uf2
+RUN go run ./cmd/gen-uf2
 
 EXPOSE 8000
 
