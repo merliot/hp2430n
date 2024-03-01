@@ -5,6 +5,7 @@ FROM ghcr.io/merliot/device:main
 WORKDIR /app
 COPY . .
 
+RUN go generate ./...
 RUN go build -tags prime -o /hp2430n ./cmd
 RUN go run ./cmd/gen-uf2
 
