@@ -30,5 +30,5 @@ func main() {
 	hp2430n.SetWifiAuth(ssids, passphrases)
 	hp2430n.SetDialURLs(dialURLs)
 	hp2430n.SetWsScheme(wsScheme)
-	runner.Run(hp2430n.Device, port, portPrime, user, passwd, dialURLs, wsScheme)
+	runner.Run(hp2430n, port, portPrime, user, passwd, dialURLs, wsScheme)
 }
