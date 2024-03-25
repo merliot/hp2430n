@@ -1,7 +1,6 @@
 package hp2430n
 
 import (
-	"embed"
 	"fmt"
 	"net/http"
 	"strings"
@@ -11,9 +10,6 @@ import (
 	"github.com/merliot/device"
 	"github.com/merliot/device/modbus"
 )
-
-//go:embed css go.mod html images js template
-var fs embed.FS
 
 const (
 	regMaxVoltage      = 0x000A
