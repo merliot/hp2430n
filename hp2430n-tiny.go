@@ -10,6 +10,6 @@ import (
 
 var fs embed.FS
 
-func newTransport() uart.Uart {
+func newTransport() *uart.Uart {
 	return uart.New()
 }
