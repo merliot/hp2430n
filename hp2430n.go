@@ -150,7 +150,7 @@ type Hp2430n struct {
 var targets = []string{"demo", "rpi", "nano-rp2040"}
 
 func New(id, model, name string) dean.Thinger {
-	println("NEW HP2430N")
+	fmt.Println("NEW HP2430N")
 	h := &Hp2430n{}
 	h.Device = device.New(id, model, name, fs, targets).(*device.Device)
 	h.Modbus = modbus.New(newTransport())

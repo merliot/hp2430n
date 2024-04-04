@@ -13,7 +13,6 @@ func newTransport() *transport {
 
 func (t *transport) Write(buf []byte) (n int, err error) {
 	// get start and words from Modbus request
-	println("Write")
 	t.start = (uint16(buf[2]) << 8) | uint16(buf[3])
 	t.words = (uint16(buf[4]) << 8) | uint16(buf[5])
 	return n, nil
