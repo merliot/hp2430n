@@ -6,9 +6,9 @@ WORKDIR /app
 COPY . .
 
 RUN go generate ./...
-RUN go build -tags prime -o /hp2430n ./cmd
+RUN go build -tags prime -o /server ./cmd
 
 EXPOSE 8000
 
 ENV PORT_PRIME=8000
-CMD ["/hp2430n"]
+CMD ["/server"]
